@@ -1,6 +1,6 @@
 
 require('./db');
-import { db } from './db'
+const db = require('./db').db;
 
 const express = require('express');
 const path = require('path');
@@ -20,7 +20,7 @@ const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
-    //store: new MongoStore({mongooseConnection: db}),
+    store: new MongoStore({mongooseConnection: db}),
     // 1 hour session duration
     ttl: 60 * 60
 };
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // enable CORS middleware
 app.use(cors({
-  //origin: ['http://localhost:3000', 'https://main--elaborate-marigold-f152a6.netlify.app'], 
+  origin: ['http://localhost:3000', 'https://main--elaborate-marigold-f152a6.netlify.app'], 
   credentials: true
 }));
 

@@ -1,6 +1,5 @@
 
 require('./db');
-const db = require('./db').db;
 
 const express = require('express');
 const path = require('path');
@@ -9,6 +8,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express();
 
@@ -20,7 +20,7 @@ const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
-    store: MongoStore.create({mongooseConnection: db}),
+    store: MongoStore.create({mongoUrl: process.env.MONGODB_URI}),
     // 1 hour session duration
     ttl: 60 * 60
 };
@@ -68,5 +68,4 @@ app.use('/', auth);
 app.use('/songs', songs);
 app.use('/upload', upload);
 
-require('dotenv').config();
 app.listen(process.env.PORT || 3001);

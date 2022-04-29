@@ -1,5 +1,6 @@
 
 require('./db');
+import { db } from './db'
 
 const express = require('express');
 const path = require('path');
@@ -13,10 +14,15 @@ const app = express();
 
 // enable sessions
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
+    store: new MongoStore({mongooseConnection: db}),
+    // 1 hour session duration
+    ttl: 60 * 60
 };
 app.use(session(sessionOptions));
 

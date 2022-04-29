@@ -26,10 +26,6 @@ const sessionOptions = {
       mongoUrl: 'mongodb+srv://ericssonc:M6loszE4kTJhNJ6X@song-db.zqo6q.mongodb.net/myFirstDatabase?'
        //process.env.MONGODB_URI,
     }),
-    cookie: {
-      secure: true,
-      maxAge: 3600000,
-    },
     // 1 hour session duration
     ttl: 60 * 60
 };

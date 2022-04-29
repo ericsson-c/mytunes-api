@@ -13,9 +13,11 @@ require('dotenv').config();
 const app = express();
 
 // enable sessions
-const session = require('express-session');
+//const session = require('express-session');
+const session  = require('cookie-session');
 const MongoStore = require('connect-mongo');
 
+/*
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
@@ -24,6 +26,14 @@ const sessionOptions = {
     // 1 hour session duration
     ttl: 60 * 60
 };
+*/
+
+const sessionOptions = {
+  secret: 'secret cookie thing',
+  // 1 hour
+  maxAge: 60 * 60
+}
+
 app.use(session(sessionOptions));
 
 // enable cookies to be sent across domains (client to api, vice versa)

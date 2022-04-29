@@ -20,7 +20,7 @@ const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({mongooseConnection: db}),
+    //store: new MongoStore({mongooseConnection: db}),
     // 1 hour session duration
     ttl: 60 * 60
 };

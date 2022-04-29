@@ -21,6 +21,7 @@ const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
+    proxy: true,
     store: MongoStore.create({
       mongoUrl: 'mongodb+srv://ericssonc:M6loszE4kTJhNJ6X@song-db.zqo6q.mongodb.net/myFirstDatabase?'
        //process.env.MONGODB_URI,

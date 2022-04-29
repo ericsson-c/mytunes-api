@@ -62,4 +62,5 @@ app.use('/', auth);
 app.use('/songs', songs);
 app.use('/upload', upload);
 
+require('dotenv').config();
 app.listen(process.env.PORT || 3001);

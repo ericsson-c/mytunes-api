@@ -6,7 +6,8 @@ const mongoose = require('mongoose'),
 // use dotenv for local configuration
 require('dotenv').config();
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true});
+mongoose.connect('mongodb+srv://ericssonc:M6loszE4kTJhNJ6X@song-db.zqo6q.mongodb.net/myFirstDatabase?',
+{ useNewUrlParser: true});
 //mongoose.connect('mongodb://localhost/songdb');
 const db = mongoose.connection;
 	

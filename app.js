@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // enable CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://main--elaborate-marigold-f152a6.netlify.app'], 
+  //origin: ['http://localhost:3000', 'https://main--elaborate-marigold-f152a6.netlify.app'], 
   credentials: true
 }));
 

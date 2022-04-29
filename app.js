@@ -24,8 +24,11 @@ const sessionOptions = {
     proxy: true,
     store: MongoStore.create({
       mongoUrl: 'mongodb+srv://ericssonc:M6loszE4kTJhNJ6X@song-db.zqo6q.mongodb.net/myFirstDatabase?'
-       //process.env.MONGODB_URI,
+      //process.env.MONGODB_URI,
     }),
+    cookie: {
+      httpOnly: false
+    },
     // 1 hour session duration
     ttl: 60 * 60
 };

@@ -84,9 +84,9 @@ const playlist = require('./routes/playlists');
 const songs = require('./routes/songs');
 const upload = require('./routes/uploadSong');
 
-app.use('/api/playlists', playlist);
-app.use('/api/', auth);
-app.use('/api/songs', songs);
-app.use('/api/upload', upload);
+app.use('/playlists', playlist);
+app.use('/', auth);
+app.use('/songs', songs);
+app.use('/upload', upload);
 
 app.listen(process.env.PORT || 3001);

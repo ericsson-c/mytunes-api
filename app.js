@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // enable CORS middleware
 app.use(cors({
-  origin: 'http://localhost:3000', // need to change this for heroku
+  origin: 'https://mytunes-api.herokuapp.com', 
   credentials: true
 }));
 

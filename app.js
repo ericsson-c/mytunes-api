@@ -12,11 +12,11 @@ require('dotenv').config();
 const app = express();
 
 // enable sessions
-//const session = require('express-session');
-const session  = require('cookie-session');
+const session = require('express-session');
+//const session  = require('cookie-session');
 const MongoStore = require('connect-mongo');
 
-/*
+
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
@@ -26,21 +26,19 @@ const sessionOptions = {
       mongoUrl: 'mongodb+srv://ericssonc:M6loszE4kTJhNJ6X@song-db.zqo6q.mongodb.net/myFirstDatabase?'
       //process.env.MONGODB_URI,
     }),
-    cookie: {
-      httpOnly: false
-    },
     // 1 hour session duration
     ttl: 60 * 60
 };
-*/
 
 
 
+/*
 const sessionOptions = {
   secret: 'secret cookie thing',
   // 1 hour
   maxAge: 60 * 60
 }
+*/
 
 
 app.use(session(sessionOptions));
@@ -58,7 +56,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // enable CORS middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://main--elaborate-marigold-f152a6.netlify.app'],
+  origin: ['http://localhost:3000',
+  'https://main--elaborate-marigold-f152a6.netlify.app',
+  'http://main--elaborate-marigold-f152a6.netlify.app',
+  'https://mytunes-frontend.herokuapp.com',
+  'http://mytunes-frontend.herokuapp.com'],
   credentials: true
 }));
 
@@ -82,9 +84,9 @@ const playlist = require('./routes/playlists');
 const songs = require('./routes/songs');
 const upload = require('./routes/uploadSong');
 
-app.use('/playlists', playlist);
-app.use('/', auth);
-app.use('/songs', songs);
-app.use('/upload', upload);
+app.use('/api/playlists', playlist);
+app.use('/api/', auth);
+app.use('/api/songs', songs);
+app.use('/api/upload', upload);
 
 app.listen(process.env.PORT || 3001);

@@ -14,13 +14,13 @@ const app = express();
 
 // enable sessions
 const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const MongoStore = require('connect-mongo');
 
 const sessionOptions = {
     secret: 'secret cookie thang (store this elsewhere!)',
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({mongooseConnection: db}),
+    store: MongoStore.create({mongooseConnection: db}),
     // 1 hour session duration
     ttl: 60 * 60
 };

@@ -19,7 +19,7 @@ const express = require('express'),
 
 Router.get('/', (req, res) => {
 	Song.find({}, (err, songs) => {
-        res.json(songs);
+        res.json({songs: songs, user: req.user});
 	});
 });
 

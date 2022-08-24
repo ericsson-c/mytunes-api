@@ -14,13 +14,16 @@ const express = require('express'),
 	mongoose = require('mongoose'),
     GridFSBucket = require('mongodb').GridFSBucket,
     { db } = require('../db'),
-    Song = mongoose.model('Song');
+    Song = mongoose.model('Song'),
+    Playlist = mongoose.model('Playlist');
 
 
-Router.get('/', (req, res) => {
-	Song.find({}, (err, songs) => {
-        res.json({songs: songs, user: req.session});
-	});
+Router.get('/', async (req, res) => {
+    const songs = await Song.find({});
+    const playlists = await Playlist.find({ user: req.user.username });
+	// why req.session??
+    res.json({ songs: songs, playlists: playlists, user: req.session });
+
 });
 
 

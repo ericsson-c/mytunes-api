@@ -30,17 +30,6 @@ const sessionOptions = {
     ttl: 60 * 60
 };
 
-
-
-/*
-const sessionOptions = {
-  secret: 'secret cookie thing',
-  // 1 hour
-  maxAge: 60 * 60
-}
-*/
-
-
 app.use(session(sessionOptions));
 
 // enable cookies to be sent across domains (client to api, vice versa)
@@ -51,6 +40,7 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 

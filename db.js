@@ -13,7 +13,7 @@ const db = mongoose.connection;
 	
 const Song = new mongoose.Schema({
 	// song name
-	title: String,
+	title: Strisng,
 	// song artist/band
 	artist: String,
 	// album
